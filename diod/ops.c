@@ -1414,7 +1414,7 @@ diod_xattrwalk (Npfid *fid, Npfid *attrfid, Npstr *name)
         goto error;
     }
     if (xattr_open (attrfid, name, &size) < 0) {
-        if (np_rerror () == ENODATA)
+        if (np_rerror () == ENODATA || np_rerror () == ENOATTR )
             goto error_quiet;
         goto error;
     }
