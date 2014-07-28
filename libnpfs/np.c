@@ -33,6 +33,7 @@
 #include "9p.h"
 #include "npfs.h"
 #include "npfsimpl.h"
+#include "ecode.h"
 
 /* wire sizes */
 #define QIDSIZE (sizeof(u8) + sizeof(u32) + sizeof(u64))
@@ -646,6 +647,8 @@ np_create_rlerror(u32 ecode)
 	struct cbuf *bufp = &buffer;
 	Npfcall *fc;
 
+    ecode = translate_ecode(ecode);
+
 	if (!(fc = np_create_common(bufp, size, P9_RLERROR)))
 		return NULL;
 	buf_put_int32(bufp, ecode, &fc->u.rlerror.ecode);
@@ -660,6 +663,8 @@ np_create_rlerror_static(u32 ecode, void *buf, int bufsize)
 	struct cbuf buffer;
 	struct cbuf *bufp = &buffer;
 	Npfcall *fc;
+
+    ecode = translate_ecode(ecode);
 
 	fc = np_create_common_static(bufp, size, P9_RLERROR, buf, bufsize);
 	buf_put_int32(bufp, ecode, &fc->u.rlerror.ecode);

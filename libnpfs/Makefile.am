@@ -7,6 +7,7 @@ noinst_LIBRARIES = libnpfs.a
 libnpfs_a_SOURCES = \
 	conn.c \
 	error.c \
+	ecode.c \
 	fcall.c \
 	fdtrans.c \
 	fidpool.c \
