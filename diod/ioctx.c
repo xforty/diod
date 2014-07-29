@@ -213,11 +213,16 @@ _ioctx_create_open (Npuser *user, Path path, int flags, u32 mode)
         np_uerror (errno);
         goto error;
     }
-#endif
-    if (S_ISDIR(sb.st_mode) && !(ioctx->dir = opendir (path->s))) {
-        np_uerror (errno);
-        goto error;
+#else
+    if (S_ISDIR(sb.st_mode)) {
+        close(ioctx->fd);
+        ioctx->fd = -1;
+        if(!(ioctx->dir = opendir (path->s))) {
+            np_uerror (errno);
+            goto error;
+        }
     }
+#endif
     diod_ustat2qid (&sb, &ioctx->qid);
     return ioctx;
 error:
