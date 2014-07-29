@@ -109,14 +109,15 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libnpfs_a_AR = $(AR) $(ARFLAGS)
 libnpfs_a_LIBADD =
-am__libnpfs_a_SOURCES_DIST = conn.c error.c fcall.c fdtrans.c \
+am__libnpfs_a_SOURCES_DIST = conn.c error.c ecode.c fcall.c fdtrans.c \
 	fidpool.c fmt.c np.c srv.c trans.c user.c npstring.c npfs.h \
 	npfsimpl.h 9p.h ctl.c xpthread.h rdmatrans.c
 @RDMATRANS_TRUE@am__objects_1 = rdmatrans.$(OBJEXT)
-am_libnpfs_a_OBJECTS = conn.$(OBJEXT) error.$(OBJEXT) fcall.$(OBJEXT) \
-	fdtrans.$(OBJEXT) fidpool.$(OBJEXT) fmt.$(OBJEXT) np.$(OBJEXT) \
-	srv.$(OBJEXT) trans.$(OBJEXT) user.$(OBJEXT) \
-	npstring.$(OBJEXT) ctl.$(OBJEXT) $(am__objects_1)
+am_libnpfs_a_OBJECTS = conn.$(OBJEXT) error.$(OBJEXT) ecode.$(OBJEXT) \
+	fcall.$(OBJEXT) fdtrans.$(OBJEXT) fidpool.$(OBJEXT) \
+	fmt.$(OBJEXT) np.$(OBJEXT) srv.$(OBJEXT) trans.$(OBJEXT) \
+	user.$(OBJEXT) npstring.$(OBJEXT) ctl.$(OBJEXT) \
+	$(am__objects_1)
 libnpfs_a_OBJECTS = $(am_libnpfs_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -311,9 +312,9 @@ top_srcdir = @top_srcdir@
 AM_CFLAGS = @GCCWARN@
 AM_CPPFLAGS = 
 noinst_LIBRARIES = libnpfs.a
-libnpfs_a_SOURCES = conn.c error.c fcall.c fdtrans.c fidpool.c fmt.c \
-	np.c srv.c trans.c user.c npstring.c npfs.h npfsimpl.h 9p.h \
-	ctl.c xpthread.h $(am__append_1)
+libnpfs_a_SOURCES = conn.c error.c ecode.c fcall.c fdtrans.c fidpool.c \
+	fmt.c np.c srv.c trans.c user.c npstring.c npfs.h npfsimpl.h \
+	9p.h ctl.c xpthread.h $(am__append_1)
 all: all-am
 
 .SUFFIXES:
@@ -365,6 +366,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/conn.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ctl.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ecode.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/error.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fcall.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fdtrans.Po@am__quote@
